@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "concurrently \"npm run server\" \"npm run watch\"",
+    "server": "nodemon server.js",
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist/index.css",
+    "watch": "npx tailwindcss -i ./src/index.css -o ./dist/index.css --watch"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,12 @@
   },
   "homepage": "https://github.com/codesandbox-app/static-template#readme",
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "@types/live-server": "^1.2.3",
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.4.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "live-server": "^1.2.2"
+  }
 }
